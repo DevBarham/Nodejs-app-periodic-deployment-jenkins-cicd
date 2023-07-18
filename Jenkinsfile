@@ -16,6 +16,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
+                dir('client-side')
                 script{
                        sh 'ls'
                        sh 'cd client-side ls'
