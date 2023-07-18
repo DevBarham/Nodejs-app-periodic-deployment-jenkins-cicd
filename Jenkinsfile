@@ -16,21 +16,25 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'cd Nodejs-app-periodic-deployment-jenkins-cicd'
-                sh 'cd client-side' // Use "npm ci" for a clean install of dependencies
-                sh 'npm i'
-                sh 'cd server-side'
-                sh 'npm i'
+                script{
+
+                    sh 'cd client-side' // Use "npm ci" for a clean install of dependencies
+                    sh 'npm i'
+                    sh 'cd server-side'
+                    sh 'npm i'
+                }
                 
             }
         }
 
         stage('Test') {
             steps {
+                script{
                  // Run tests
-                sh 'cd Nodejs-app-periodic-deployment-jenkins-cicd'
                 sh 'cd server-side'
                 sh 'npm test'
+
+                }
             }
             post {
                 success {
@@ -45,11 +49,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'cd Nodejs-app-periodic-deployment-jenkins-cicd'
+                script{
                 sh 'cd client-side'
                 sh 'npm run build' // Add your build commands here
                 sh 'cd server-side'
                 sh 'npm start'
+
+                }
             }
         }
 
