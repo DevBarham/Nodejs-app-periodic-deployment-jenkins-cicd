@@ -17,67 +17,69 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script{
+                       sh 'ls'
+                }}}}} 
 
-                    sh 'cd client-side' // Use "npm ci" for a clean install of dependencies
-                    sh 'npm i'
-                    sh 'cd server-side'
-                    sh 'npm i'
-                }
+//                     sh 'cd client-side' // Use "npm ci" for a clean install of dependencies
+//                     sh 'npm i'
+//                     sh 'cd server-side'
+//                     sh 'npm i'
+//                 }
                 
-            }
-        }
+//             }
+//         }
 
-        stage('Test') {
-            steps {
-                script{
-                 // Run tests
-                sh 'cd server-side'
-                sh 'npm test'
+//         stage('Test') {
+//             steps {
+//                 script{
+//                  // Run tests
+//                 sh 'cd server-side'
+//                 sh 'npm test'
 
-                }
-            }
-            post {
-                success {
-                    echo 'Tests passed. Proceeding with the build...'
-                }
-                failure {
-                    echo 'Tests failed. Aborting the build.'
-                    error 'Tests failed.'
-                }
-            }
-        }
+//                 }
+//             }
+//             post {
+//                 success {
+//                     echo 'Tests passed. Proceeding with the build...'
+//                 }
+//                 failure {
+//                     echo 'Tests failed. Aborting the build.'
+//                     error 'Tests failed.'
+//                 }
+//             }
+//         }
 
-        stage('Build') {
-            steps {
-                script{
-                sh 'cd client-side'
-                sh 'npm run build' // Add your build commands here
-                sh 'cd server-side'
-                sh 'npm start'
+//         stage('Build') {
+//             steps {
+//                 script{
+//                 sh 'cd client-side'
+//                 sh 'npm run build' // Add your build commands here
+//                 sh 'cd server-side'
+//                 sh 'npm start'
 
-                }
-            }
-        }
+//                 }
+//             }
+//         }
 
-        stage('Deploy') {
-            steps {
-                // Add deployment steps here
-                 echo 'Deploying App...'
-            }
-        }
-    }
+//         stage('Deploy') {
+//             steps {
+//                 // Add deployment steps here
+//                  echo 'Deploying App...'
+//             }
+//         }
+//     }
 
-    post {
-        always {
-            // Clean up or perform any post-build actions here
-             echo 'Performing post-build actions...'
-        }
-        success {
-            echo 'Build and deployment were successful.'
-        }
-        failure {
-            echo 'Build or deployment failed.'
-            error 'Build or deployment failed.'
-        }
-    }
-}
+//     post {
+//         always {
+//             // Clean up or perform any post-build actions here
+//              echo 'Performing post-build actions...'
+//         }
+//         success {
+//             echo 'Build and deployment were successful.'
+//         }
+//         failure {
+//             echo 'Build or deployment failed.'
+//             error 'Build or deployment failed.'
+//         }
+//     }
+// }
