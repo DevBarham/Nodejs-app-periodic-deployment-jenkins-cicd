@@ -19,7 +19,7 @@ pipeline {
                 dir('Nodejs-app-periodic-deployment-jenkins-cicd/client-side'){
                 script{
                        sh 'ls'
-                       sh 'cd client-side ls'
+                    //    sh 'cd client-side ls'
                        
                 }}}}}} 
 
