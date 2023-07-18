@@ -18,8 +18,8 @@ pipeline {
             steps {
                 script{
                        sh 'ls'
-                       sh 'cd client-side'
-                       sh 'ls'
+                       sh 'cd client-side ls'
+                       
                 }}}}} 
 
 //                     sh 'cd client-side' // Use "npm ci" for a clean install of dependencies
