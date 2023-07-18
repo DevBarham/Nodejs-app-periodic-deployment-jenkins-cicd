@@ -17,7 +17,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('Nodejs-app-periodic-deployment-jenkins-cicd/client-side'){
-                    {
+                script{
                        sh 'ls'
                     //    sh 'cd client-side ls'
                        
